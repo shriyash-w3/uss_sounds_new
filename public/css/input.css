@@ -1,0 +1,229 @@
+body {
+  overflow-x: hidden;
+  margin: 0px auto;
+  font-family: "Inter", serif;
+}
+
+.wrapper {
+  width: 1400px;
+  margin: 0px auto;
+}
+@media screen and (max-width: 1380px) {
+  .wrapper {
+    width: 90%;
+  }
+}
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+@media screen and (max-width:1000px){
+  .card-container{
+  grid-template-columns:  repeat(2,1fr);
+  }
+}
+@media screen and (max-width:500px){
+  .card-container{
+  grid-template-columns:  repeat(1,1fr);
+  }
+}
+.card {
+  background-color: #EFF2FC;
+  ;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.icon {
+  font-size: 30px;
+  background: black;
+  color: white;
+  padding: 20px;
+  display: inline-block;
+  border-radius: 8px;
+}
+.title {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.subtitle {
+  font-size: 16px;
+  font-weight: bold;
+}
+.description {
+  margin-top: 10px;
+  color: gray;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 50;
+  top: calc(100% + 10px);
+  left: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.dropdown-content.hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dropdown-content.block {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.dropdown-content::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  height: 20px;
+  width: 100%;
+  background: transparent;
+}
+
+.dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  top: 100%;
+}
+/* Replace or modify existing .dropdown-content styles */
+.dropdown-content {
+  display: block !important; /* Override Tailwind's hidden */
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+}
+.dropdown-content li {
+  list-style: none;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+header {
+  position: relative;
+  z-index: 1000; /* Ensures header stays above other content */
+}
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #EFF2FC;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Spacer to prevent content overlap */
+.header-spacer {
+  height: 72px; /* Match your header height */
+}
+
+/* Ensure dropdown menus appear above other content */
+.dropdown-content {
+  z-index: 1001;
+}
+
+/* Mobile menu adjustments */
+@media screen and (max-width: 1023px) {
+  #nav-content.show {
+    display: block;
+    position: fixed;
+    top: 72px; /* Match your header height */
+    left: 0;
+    right: 0;
+    background-color: #EFF2FC;
+    z-index: 999;
+  }
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+#backdrop {
+  display: none; /* Hide backdrop initially */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 40; /* Ensure it's below the menu but above content */
+}
+
+/* Make sure body content is hidden when menu is open */
+/* Hide everything in the body when the menu is open */
+body.menu-open {
+  visibility: hidden;
+  overflow: hidden;
+}
+
+/* Show the backdrop and menu */
+body.menu-open #backdrop {
+  visibility: visible;
+  display: block;
+}
+
+body.menu-open #nav-content {
+  visibility: visible;
+  display: block;
+}
+body.menu-open header{
+  visibility: visible;
+  display: block;
+}
+
+/* Ensure backdrop appears above content */
+#backdrop {
+  display: none; /* Hidden initially */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 50; /* Ensure it's above content but below menu */
+}
+
+/* Show backdrop when menu is open */
+@media screen and (min-width: 1024px) {
+  .mobile-logo{
+    visibility: hidden;
+  } 
+}
